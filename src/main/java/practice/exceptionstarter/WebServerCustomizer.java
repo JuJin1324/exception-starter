@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
  */
 
 @Slf4j
-@Component
+//@Component
 public class WebServerCustomizer implements WebServerFactoryCustomizer<ConfigurableWebServerFactory> {
 
     @Override
