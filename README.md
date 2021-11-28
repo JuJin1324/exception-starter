@@ -31,6 +31,11 @@
 > 3.적용 대상이 없을 때(위 1,2가 없을 때 등등)     
 > resources/templates/error.html  
 
+### 스프링 부트 vs 순수 servlet 예외 Page 처리
+> 순수 servlet 예외 Page 처리의 경우 컨트롤러에서 예외 발생 시 WAS 까지 예외가 올라가지만 스프링 부트의 BasicErrorController 예외 처리의 경우 
+> WAS 까지 예외전파가 되지 않고 스프링 MVC 내에서 처리한다.  
+> 중요) WAS 까지 예외 전파를 하게 되면 JUnit 테스트가 불가능해진다.(JUnit 테스트에서는 WAS 를 붙이지 않기 때문에)   
+
 ## API 예외
 ### 테스트 방법
 > `test/java/practice.exceptionstarter.controllers.api.ApiExceptionControllerTest` 에서 JUnit 테스트 실행

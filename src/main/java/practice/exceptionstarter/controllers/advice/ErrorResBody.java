@@ -1,4 +1,4 @@
-package practice.exceptionstarter.controllers.exceptions;
+package practice.exceptionstarter.controllers.advice;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;

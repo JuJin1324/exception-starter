@@ -1,4 +1,4 @@
-package practice.exceptionstarter.controllers.exceptions;
+package practice.exceptionstarter.controllers.advice;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -14,7 +14,6 @@ import practice.exceptionstarter.exceptions.ResourceDuplicatedException;
 import practice.exceptionstarter.exceptions.ResourceNotFoundException;
 
 import javax.servlet.http.HttpServletRequest;
-import java.io.IOException;
 
 /**
  * Created by Yoo Ju Jin(jujin1324@daum.net)

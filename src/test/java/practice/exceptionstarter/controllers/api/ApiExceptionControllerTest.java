@@ -10,7 +10,7 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.filter.CharacterEncodingFilter;
-import practice.exceptionstarter.controllers.exceptions.ExceptionControllerAdvice;
+import practice.exceptionstarter.controllers.advice.ExceptionControllerAdvice;
 import practice.exceptionstarter.exceptions.ErrorConst;
 import practice.exceptionstarter.exceptions.ErrorMessageConst;
 
