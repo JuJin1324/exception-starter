@@ -34,8 +34,18 @@ class ApiExceptionControllerTest {
     }
 
     @Test
-    void getMember() throws Exception {
+    void getMember_whenNormal() throws Exception {
         mockMvc.perform(get("/api/members/{id}", "spring")
+                        .accept(MediaType.APPLICATION_JSON)
+                )
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.memberId").value("spring"))
+                .andExpect(jsonPath("$.name").value("hello spring"));
+    }
+
+    @Test
+    void getMember_whenOccurException() throws Exception {
+        mockMvc.perform(get("/api/members/{id}", "bad")
                         .accept(MediaType.APPLICATION_JSON)
                 )
                 .andExpect(status().isOk())
