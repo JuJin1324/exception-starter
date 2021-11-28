@@ -43,6 +43,17 @@ public class ExceptionControllerAdvice {
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public ErrorResBody handleTypeMismatchException(HttpServletRequest request, final MethodArgumentTypeMismatchException e) {
         log.error("requestURI: {}, errorMessage: {}", request.getRequestURI(), e.getMessage());
+        return new ErrorResBody(HttpStatus.BAD_REQUEST, ErrorConst.TYPE_MISMATCH, getTypeMismatchErrorMessage(e));
+    }
+
+    @ExceptionHandler
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public ErrorResBody handleInvalidRequestBodyException(HttpServletRequest request, final HttpMessageNotReadableException e) {
+        log.error("requestURI: {}, errorMessage: {}", request.getRequestURI(), e.getMessage());
+        return new ErrorResBody(HttpStatus.BAD_REQUEST, ErrorConst.INVALID_REQUEST_BODY, e.getMessage());
+    }
+
+    private String getTypeMismatchErrorMessage(MethodArgumentTypeMismatchException e) {
         StringBuilder errorMessageBuilder = new StringBuilder();
         if (StringUtils.hasText(e.getName())) {
             errorMessageBuilder.append(e.getName());
@@ -52,13 +63,7 @@ public class ExceptionControllerAdvice {
         errorMessageBuilder.append(String.format(" [%s] 의 타입이 올바르지 않습니다. 올바른 타입은 %s 입니다.",
                 e.getValue(),
                 e.getRequiredType()));
-        return new ErrorResBody(HttpStatus.BAD_REQUEST, ErrorConst.TYPE_MISMATCH, errorMessageBuilder.toString());
-    }
 
-    @ExceptionHandler
-    @ResponseStatus(HttpStatus.BAD_REQUEST)
-    public ErrorResBody handleInvalidRequestBodyException(HttpServletRequest request, final HttpMessageNotReadableException e) {
-        log.error("requestURI: {}, errorMessage: {}", request.getRequestURI(), e.getMessage());
-        return new ErrorResBody(HttpStatus.BAD_REQUEST, ErrorConst.INVALID_REQUEST_BODY, e.getMessage());
+        return errorMessageBuilder.toString();
     }
 }
