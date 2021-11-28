@@ -1,4 +1,4 @@
-package practice.exceptionstarter.filter;
+package practice.exceptionstarter.filters;
 
 import lombok.extern.slf4j.Slf4j;
 

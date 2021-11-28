@@ -2,17 +2,13 @@ package practice.exceptionstarter.config;
 
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.web.servlet.HandlerExceptionResolver;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
-import practice.exceptionstarter.filter.LogFilter;
-import practice.exceptionstarter.interceptor.LogInterceptor;
-import practice.exceptionstarter.resolver.MyHandlerExceptionResolver;
-import practice.exceptionstarter.resolver.UserHandlerExceptionResolver;
+import practice.exceptionstarter.filters.LogFilter;
+import practice.exceptionstarter.interceptors.LogInterceptor;
 
 import javax.servlet.DispatcherType;
 import javax.servlet.Filter;
-import java.util.List;
 
 /**
  * Created by Yoo Ju Jin(jujin1324@daum.net)
@@ -39,11 +35,5 @@ public class WebConfig implements WebMvcConfigurer {
                 .order(1)
                 .addPathPatterns("/**")
                 .excludePathPatterns("/css/**", "*.ico", "/error");
-    }
-
-    @Override
-    public void extendHandlerExceptionResolvers(List<HandlerExceptionResolver> resolvers) {
-        resolvers.add(new MyHandlerExceptionResolver());
-        resolvers.add(new UserHandlerExceptionResolver());
     }
 }

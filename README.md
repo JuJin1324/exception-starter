@@ -2,6 +2,13 @@
 > spring-boot Web MVC exception 처리 관련
 
 ## servlet 예외
+### 테스트 방법
+> App 실행 후 브라우저에서   
+> `http://localhost:8080/error-ex`  
+> `http://localhost:8080/error-404`  
+> `http://localhost:8080/error-400`  
+> `http://localhost:8080/error-500`  
+
 ### 순수 servlet 예외 Page 처리
 > 컨트롤러 메서드 내에서 Exception 이 발생하거나 response.sendError 메서드를 호출하면  
 > 1.컨트롤러 -> 인터셉터 -> 서블릿 -> 필터 -> WAS 로 해당 error 전파   
@@ -25,3 +32,15 @@
 > resources/templates/error.html  
 
 ## API 예외
+### 테스트 방법
+> `test/java/practice.exceptionstarter.controllers.api.ApiExceptionControllerTest` 에서 JUnit 테스트 실행
+
+### ControllerAdvice
+ControllerAdvice Annotation
+> @RestController 애노테이션이 붙은 컨트롤러들에서만 이 advice 에서 Exception 처리를 한다. - 
+> `@RestControllerAdvice(annotations = RestController.class)`  
+> 지정된 패키지에 있는 컨트롤러들에서만 이 advice 에서 Exception 처리를 한다. - 
+> `@RestControllerAdvice("practice.exceptionstarter.controllers.api")`  
+> 지정된 컨트롤러 및 컨트롤러의 자식 클래스에서 이 advice 에서 Exception 처리를 한다. - 
+> `@RestControllerAdvice(assignableTypes = {ApiExceptionController.class, ApiExceptionV2Controller.class})`    
+

@@ -1,4 +1,4 @@
-package practice.exceptionstarter.interceptor;
+package practice.exceptionstarter.interceptors;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.method.HandlerMethod;
