@@ -28,14 +28,14 @@ public class ExceptionControllerAdvice {
     @ResponseStatus(HttpStatus.NOT_FOUND)
     public ErrorResBody handleResourceNotFoundException(HttpServletRequest request, final ResourceNotFoundException e) {
         log.error("requestURI: {}, errorMessage: {}", request.getRequestURI(), e.getMessage());
-        return new ErrorResBody(HttpStatus.NOT_FOUND, e.getError(), e.getMessage());
+        return new ErrorResBody(HttpStatus.NOT_FOUND, ErrorConst.RESOURCE_NOT_FOUND, e.getMessage());
     }
 
     @ExceptionHandler
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public ErrorResBody handleResourceDuplicatedException(HttpServletRequest request, final ResourceDuplicatedException e) {
         log.error("requestURI: {}, errorMessage: {}", request.getRequestURI(), e.getMessage());
-        return new ErrorResBody(HttpStatus.BAD_REQUEST, e.getError(), e.getMessage());
+        return new ErrorResBody(HttpStatus.BAD_REQUEST, ErrorConst.RESOURCE_DUPLICATED, e.getMessage());
     }
 
     @ExceptionHandler

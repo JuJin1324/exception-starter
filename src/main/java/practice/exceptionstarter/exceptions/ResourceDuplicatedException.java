@@ -8,10 +8,7 @@ import lombok.Getter;
  */
 @Getter
 public class ResourceDuplicatedException extends RuntimeException {
-    private final String error;
-
     public ResourceDuplicatedException(String resourceName) {
         super(ErrorMessageConst.RESOURCE_DUPLICATED + String.format(" [%s]", resourceName));
-        this.error = ErrorConst.RESOURCE_DUPLICATED;
     }
 }
